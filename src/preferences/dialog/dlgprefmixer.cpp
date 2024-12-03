@@ -546,11 +546,10 @@ void DlgPrefMixer::applyDeckEQs() {
         const EffectManifestPointer pManifest =
                 m_pBackendManager->getManifestFromUniqueId(
                         pBox->currentData().toString());
-        if (pManifest != nullptr && pManifest->isMixingEQ() && !m_eqBypass) {
-            pChainSlot->setFilterWaveform(true);
-        } else {
-            pChainSlot->setFilterWaveform(false);
-        }
+
+       // Disable the EQ filter on the waveform
+       // This setting should be adjusted by a preference
+       pChainSlot->setFilterWaveform(false); 
 
         if (needLoad) {
             pEffectSlot->loadEffectWithDefaults(pManifest);

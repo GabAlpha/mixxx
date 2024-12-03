@@ -26,8 +26,9 @@ EqualizerEffectChain::EqualizerEffectChain(
             this,
             [this](const QString& presetname) {
                 Q_UNUSED(presetname);
-                setFilterWaveform(
-                        m_effectSlots.at(0)->getManifest()->isMixingEQ());
+                // Disable the EQ filter on the waveform
+                // This setting should be adjusted by a preference
+                setFilterWaveform(false);
             });
 
     setupLegacyAliasesForGroup(handleAndGroup.name());
